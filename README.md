@@ -6,14 +6,20 @@ To prevent network conflicts (such as DNS and DHCP overlaps) when adding a secon
 
 ---
 
-## 🚀 Key Features & Structure
+## Key Features & Structure
 
-* **Package Prerequisites:** The very first line of the file specifies the required packages that must be installed on the WSM20. These must be baked in during a custom image compilation.
-* **Dynamic Configuration Variables (Lines 2–25):** The lines contain configuration variables that allow you to easily customize the device behavior without digging deeper into the script. From here, you can modify:
+* **Package Prerequisites:** The very first line of the file specifies the required packages that must be installed on the WSM20. These can either be baked in during a custom image compilation or referenced for backup purposes (all compressed into a single line).
+* **Dynamic Configuration Variables (Lines 1–10):** The first ten lines contain configuration variables that allow you to easily customize the device behavior without digging deeper into the script. From here, you can modify:
   * Wi-Fi SSID (Network Name) & Password
   * Device Administrator Password
   * LAN IP Address Range
-  * Device Operating Mode toggles (**MASTER** or **CLIENT**)
+  * Device Operating Mode toggles (**MASTER** vs. **CLIENT**)
+
+---
+
+## Unified Mesh Wi-Fi Network
+
+Regardless of whether a device is configured in **MASTER** or **CLIENT** mode, all WSM20 units are provisioned to broadcast a unified **Mesh Wi-Fi Network**. This ensures seamless roaming across the entire coverage area under a single Wi-Fi name (SSID) and password, allowing client devices to transition between nodes without disconnection.
 
 ---
 
@@ -25,4 +31,4 @@ To prevent network conflicts (such as DNS and DHCP overlaps) when adding a secon
 
 ### 2. CLIENT Mode (Access Point / Secondary Node)
 * **Topology:** Connected downstream to expand wireless coverage.
-* **Role:** DHCP and DNS server capabilities are disabled to prevent conflicts with the MASTER node, establishing a clean, unified network infrastructure.
+* **Role:** DHCP and DNS server capabilities are disabled to prevent conflicts with the MASTER node, establishing a clean, unified network infrastructure while acting as an extension of the Mesh Wi-Fi.
